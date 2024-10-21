@@ -3,14 +3,18 @@ package org.pg.inf.sem5.gr2.entities;
 import lombok.Builder;
 import lombok.Data;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 
 @Data
 @Builder
+@Entity
 public class Album implements Serializable {
     private String title;
     private String author;
