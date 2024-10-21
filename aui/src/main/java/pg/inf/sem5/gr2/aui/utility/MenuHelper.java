@@ -23,21 +23,21 @@ public class MenuHelper {
         this.songService = songService;
     }
 
-    public static void printAllAlbums() {
+    public void printAllAlbums() {
         printAlbums(albumService.findAll());
     }
 
-    public static void printAllSongs() {
+    public void printAllSongs() {
         songService.findAll().forEach(song -> System.out.println(song));
     }
 
-    public static void printAllSongsInAlbum() {
+    public void printAllSongsInAlbum() {
         List<Album> albums = albumService.findAll();
         Album album = selectAlbum(albums);
         songService.findByAlbum(album).forEach(song -> System.out.println(song));
     }
 
-    public static void addNewAlbum() {
+    public void addNewAlbum() {
         System.out.print("Enter album title: ");
         String title = scanner.nextLine();
         System.out.print("Enter album author: ");
@@ -51,7 +51,7 @@ public class MenuHelper {
         albumService.save(album);
     }
 
-    public static void addNewSong() {
+    public void addNewSong() {
         List<Album> albums = albumService.findAll();
         Album album = selectAlbum(albums);
 
@@ -59,7 +59,7 @@ public class MenuHelper {
         String title = scanner.nextLine();
         System.out.print("Enter song duration: ");
         int duration = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine();  // Clear the buffer
 
         Song song = Song.builder()
                 .title(title)
@@ -70,13 +70,13 @@ public class MenuHelper {
         songService.save(song);
     }
 
-    public static void deleteAlbum() {
+    public void deleteAlbum() {
         List<Album> albums = albumService.findAll();
         Album album = selectAlbum(albums);
         albumService.delete(album.getId());
     }
 
-    public static void deleteSong() {
+    public void deleteSong() {
         List<Song> songs = songService.findAll();
         Song song = selectSong(songs);
         songService.delete(song.getId());
@@ -93,7 +93,7 @@ public class MenuHelper {
         printAlbums(albums);
         System.out.print("Enter album number: ");
         int num = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine();  // Clear the buffer
         return albums.get(num - 1);
     }
 
@@ -103,7 +103,7 @@ public class MenuHelper {
         songs.forEach(song -> System.out.println(counter.getAndIncrement() + " " + song.getTitle()));
         System.out.print("Enter song number: ");
         int num = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine();  // Clear the buffer
         return songs.get(num - 1);
     }
 }

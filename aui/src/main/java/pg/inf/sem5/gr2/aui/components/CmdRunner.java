@@ -11,20 +11,17 @@ import java.util.Scanner;
 
 @Component
 public class CmdRunner implements CommandLineRunner {
-    private final AlbumService albumService;
-    private final SongService songService;
+    private final MenuHelper menuHelper;
 
     @Autowired
-    public CmdRunner(AlbumService albumService, SongService songService) {
-        this.albumService = albumService;
-        this.songService = songService;
+    public CmdRunner(MenuHelper menuHelper) {
+        this.menuHelper = menuHelper;
     }
-
-
-
 
     @Override
     public void run(String... args) throws Exception {
+
+
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
@@ -45,25 +42,25 @@ public class CmdRunner implements CommandLineRunner {
 
             switch (option){
                 case 1:
-                    MenuHelper.printAllAlbums();
+                    menuHelper.printAllAlbums();
                     break;
                 case 2:
-                    MenuHelper.printAllSongs();
+                    menuHelper.printAllSongs();
                     break;
                 case 3:
-                    MenuHelper.printAllSongsInAlbum();
+                    menuHelper.printAllSongsInAlbum();
                     break;
                 case 4:
-                    MenuHelper.addNewAlbum();
+                    menuHelper.addNewAlbum();
                     break;
                 case 5:
-                    MenuHelper.addNewSong();
+                    menuHelper.addNewSong();
                     break;
                 case 6:
-                    MenuHelper.deleteAlbum();
+                    menuHelper.deleteAlbum();
                     break;
                 case 7:
-                    MenuHelper.deleteSong();
+                    menuHelper.deleteSong();
                     break;
                 case 8:
                     running = false;
