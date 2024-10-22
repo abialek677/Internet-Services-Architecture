@@ -69,5 +69,7 @@ public class CmdRunner implements CommandLineRunner {
                     System.out.println("Invalid option");
             }
         }
+
+        System.exit(0);
     }
 }
