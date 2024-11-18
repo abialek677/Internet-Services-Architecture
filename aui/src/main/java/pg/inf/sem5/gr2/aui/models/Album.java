@@ -1,10 +1,8 @@
 package pg.inf.sem5.gr2.aui.models;
 
 import jakarta.persistence.*;
-import jdk.jfr.Name;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ public class Album implements Serializable, Comparable<Album> {
     private String title;
     private String author;
 
-    @OneToMany(mappedBy = "album", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "album", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @Column(name = "songs")
     private List<Song> songList;
 
@@ -44,7 +42,7 @@ public class Album implements Serializable, Comparable<Album> {
 
     @Override
     public String toString() {
-        return "" +
+        return
                 "\n{" +
                 "\nAlbumTitle=" + title +
                 ",\nAlbumAuthor=" + author +

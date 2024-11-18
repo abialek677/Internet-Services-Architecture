@@ -33,7 +33,7 @@ public class AlbumService {
         albumRepository.deleteById(id);
     }
 
-    public List<Album> findByTitle(String title) {
+    public Album findByTitle(String title) {
         return albumRepository.findByTitle(title);
     }
 

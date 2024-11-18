@@ -1,0 +1,68 @@
+``` Songs ```
+
+### 1. Testowanie endpointu GET - Pobierz wszystkie utwory
+GET http://localhost:8080/api/songs
+Accept: application/json
+
+### 2. Testowanie endpointu POST - Tworzenie nowego utworu
+POST http://localhost:8080/api/songs
+Content-Type: application/json
+
+{
+  "title": "New Song",
+  "album": "Violator",
+  "duration": 210
+}
+
+### 3. Testowanie endpointu GET - Pobierz utwór po ID
+GET http://localhost:8080/api/songs/{id}
+Accept: application/json
+
+### 4. Testowanie endpointu PUT - Zaktualizuj utwór
+PUT http://localhost:8080/api/songs/{id}
+Content-Type: application/json
+
+{
+"title": "Updated title song",
+"album": "A Rush of Blood to the Head",
+"duration": 250
+}
+
+### 5. Testowanie endpointu DELETE - Usuń utwór
+DELETE http://localhost:8080/api/songs/{id}
+
+``` Albums ```
+
+
+### 1. Testowanie endpointu GET - Pobierz wszystkie albumy
+GET http://localhost:8080/api/albums
+Accept: application/json
+
+### 2. Testowanie endpointu POST - Tworzenie nowego albumu
+POST http://localhost:8080/api/albums
+Content-Type: application/json
+
+{
+  "title": "album",
+  "author": "author"
+}
+
+### 3. Testowanie endpointu GET - Pobierz album po ID
+GET http://localhost:8080/api/albums/{id}
+Accept: application/json
+
+### 4. Testowanie endpointu PUT - Zaktualizuj album
+PUT http://localhost:8080/api/albums/{id}
+Content-Type: application/json
+
+{
+  "title": "Updated Album Title",
+  "author": "Updated Album Author"
+}
+
+### 5. Testowanie endpointu DELETE - Usuń album
+DELETE http://localhost:8080/api/albums/{id}
+
+
+### 6. Testowanie endpointu GET - Pobierz wszystkie utwory z albumu
+GET http://localhost:8080/api/albums/{id}/songs

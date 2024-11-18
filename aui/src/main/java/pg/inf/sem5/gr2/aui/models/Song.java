@@ -20,7 +20,7 @@ public class Song implements Serializable, Comparable<Song> {
     private String title;
     private int duration;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "album")
     private Album album;
 
