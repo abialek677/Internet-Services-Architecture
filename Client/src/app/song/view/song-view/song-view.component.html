@@ -1,0 +1,27 @@
+<article *ngIf="song">
+  <header>
+    <h2>{{ song.title }}</h2>
+  </header>
+
+  <div>
+    <div>
+      <div>
+        <div>
+          <strong>AlbumId</strong>
+        </div>
+        <div>
+          <span>{{ song.albumId }}</span>
+        </div>
+      </div>
+
+      <div>
+        <div>
+          <strong>Duration</strong>
+        </div>
+        <div>
+          <span>{{ song.duration }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

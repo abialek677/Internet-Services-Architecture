@@ -1,0 +1,44 @@
+<article *ngIf="album">
+  <header>
+    <h2>Album Details</h2>
+  </header>
+
+  <div>
+    <span><b>Id: </b>{{album.id}}</span>
+  </div>
+  <div>
+    <span><b>Title: </b>{{album.title}}</span>
+  </div>
+  <div>
+    <span><b>Author: </b>{{album.author}}</span>
+  </div>
+
+  <div>
+    <button [routerLink]="['./add']">Add Song</button>
+  </div>
+
+  <table *ngIf="album.songs">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let song of album.songs || []">
+      <td>{{ song.title }}</td>
+      <td>
+        <button [routerLink]="['./songs', song.id]">View</button>
+      </td>
+      <td>
+        <button [routerLink]="['./songs', song.id, 'edit']">Edit</button>
+      </td>
+      <td>
+        <button (click)="delete(song.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</article>

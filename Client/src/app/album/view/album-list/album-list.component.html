@@ -1,0 +1,24 @@
+<article>
+  <header>
+    <h2>Album Collection</h2>
+    <button [routerLink]="['./add']">Add New Album</button>
+  </header>
+
+  <div *ngIf="albums">
+    <div *ngFor="let album of albums.albums">
+      <div>
+        <h3>{{ album.title }}</h3>
+        <p><strong>ID:</strong> {{ album.id }}</p>
+      </div>
+      <div>
+        <button [routerLink]="['./edit', album.id]">Edit</button>
+      </div>
+      <div>
+        <button [routerLink]="['./', album.id]">Details</button>
+      </div>
+      <div>
+        <button (click)="onDelete(album.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,25 @@
+<article *ngIf="album">
+  <header>
+    <h2>Edit Album</h2>
+  </header>
+
+  <form #form="ngForm" (ngSubmit)="submit()">
+    <div>
+      <label for="title">Title:</label>
+      <input id="title" name="title" [(ngModel)]="album.title" />
+    </div>
+
+    <div>
+      <label for="author">Author:</label>
+      <input id="author" name="author" [(ngModel)]="album.author" />
+    </div>
+
+    <div>
+      <button type="submit">Update</button>
+    </div>
+
+    <div>
+      <button type="button" (click)="form.resetForm(original)">Reset</button>
+    </div>
+  </form>
+</article>

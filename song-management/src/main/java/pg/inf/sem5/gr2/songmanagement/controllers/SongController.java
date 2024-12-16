@@ -55,7 +55,18 @@ public class SongController {
     @PostMapping
     public ResponseEntity<SongReadDTO> createSong(@RequestBody SongCreateDTO songDTO){
 
-        Song song = songService.create(songDTO);
+        Song song = songService.create(songDTO, null);
+
+        return ResponseEntity.ok(SongReadDTO.builder()
+                .id(song.getId())
+                .title(song.getTitle())
+                .duration(song.getDuration())
+                .build());
+    }
+
+    @PostMapping("/{albumId}")
+    public ResponseEntity<SongReadDTO> createSongByAlbumId(@RequestBody SongCreateDTO songDTO, @PathVariable UUID albumId) {
+        Song song = songService.create(songDTO, albumId);
 
         return ResponseEntity.ok(SongReadDTO.builder()
                 .id(song.getId())
@@ -89,7 +100,7 @@ public class SongController {
             return ResponseEntity.notFound().build();
         }
 
-        songService.update(song, songDTO);
+        songService.update(song, songDTO, null);
 
         return ResponseEntity.ok(SongReadDTO.builder()
                 .id(song.getId())
@@ -97,6 +108,24 @@ public class SongController {
                 .duration(song.getDuration())
                 .build());
     }
+
+    @PutMapping("/{albumId}/edit/{id}")
+    public ResponseEntity<SongReadDTO> updateSongInAlbum(@PathVariable UUID id,@PathVariable UUID albumId, @RequestBody SongCreateDTO songDTO) {
+        Song song = songService.findById(id);
+        if (song == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        songService.update(song, songDTO, albumId);
+
+        return ResponseEntity.ok(SongReadDTO.builder()
+                .id(song.getId())
+                .title(song.getTitle())
+                .duration(song.getDuration())
+                .build());
+    }
+
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSong(@PathVariable UUID id) {

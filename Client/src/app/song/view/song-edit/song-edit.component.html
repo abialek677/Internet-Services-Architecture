@@ -1,0 +1,25 @@
+<article *ngIf="song">
+  <header>
+    <h2>Edit Song</h2>
+  </header>
+
+  <form #form="ngForm" (ngSubmit)="submit()">
+    <div>
+      <label for="title">Title:</label>
+      <input id="title" name="title" [(ngModel)]="song.title" required />
+    </div>
+
+    <div>
+      <label for="duration">Duration:</label>
+      <textarea id="duration" name="duration" [(ngModel)]="song.duration"></textarea>
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="!form.valid">Update</button>
+    </div>
+
+    <div>
+      <button type="button" (click)="form.resetForm(original)">Reset</button>
+    </div>
+  </form>
+</article>

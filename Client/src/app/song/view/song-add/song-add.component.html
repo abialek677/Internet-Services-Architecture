@@ -1,0 +1,30 @@
+<article *ngIf="song">
+  <header>
+    <h2>Add Song</h2>
+  </header>
+
+  <form #form="ngForm" (ngSubmit)="submit()">
+    <div>
+      <label for="albumId">AlbumId:</label>
+      <input id="albumId" name="albumId" [(ngModel)]="song.albumId" disabled />
+    </div>
+
+    <div>
+      <label for="title">Title:</label>
+      <input id="title" name="title" [(ngModel)]="song.title" required />
+    </div>
+
+    <div>
+      <label for="duration">Duration:</label>
+      <textarea id="duration" name="duration" [(ngModel)]="song.duration"></textarea>
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="!form.valid">Add</button>
+    </div>
+
+    <div>
+      <button type="button" (click)="ngOnInit()">Reset</button>
+    </div>
+  </form>
+</article>

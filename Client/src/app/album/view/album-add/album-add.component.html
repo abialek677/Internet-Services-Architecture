@@ -1,0 +1,29 @@
+<article>
+  <header>
+    <h2>Add Album</h2>
+  </header>
+
+  <form #form="ngForm" (ngSubmit)="submit()">
+    <div>
+      <label for="title">Title:</label>
+      <input id="title" name="title" [(ngModel)]="album.title" required />
+    </div>
+
+    <div>
+      <label for="author">Author:</label>
+      <input id="author" name="author" [(ngModel)]="album.author" required />
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="!form.valid">Add</button>
+    </div>
+
+    <div>
+      <button type="button" (click)="form.resetForm()">Reset</button>
+    </div>
+
+    <div>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</article>

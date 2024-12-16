@@ -58,12 +58,12 @@ public class DataInitializer implements InitializingBean {
                 .album("A Rush of Blood to the Head")
                 .build();
 
-        songService.create(u2Song1);
-        songService.create(u2Song2);
-        songService.create(depecheModeSong1);
-        songService.create(depecheModeSong2);
-        songService.create(coldplaySong1);
-        songService.create(coldplaySong2);
+        songService.create(u2Song1, null);
+        songService.create(u2Song2, null);
+        songService.create(depecheModeSong1, null);
+        songService.create(depecheModeSong2, null);
+        songService.create(coldplaySong1, null);
+        songService.create(coldplaySong2, null);
     }
 
 }

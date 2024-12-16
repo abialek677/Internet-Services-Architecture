@@ -18,7 +18,7 @@ public class SongService {
     private final SongRepository songRepository;
     private RestTemplate restTemplate;
 
-    @Value("${album-service.url}")
+    @Value("http://localhost:8082/api/albums")
     private String albumServiceUrl;
 
     @Autowired
@@ -55,9 +55,9 @@ public class SongService {
         return songRepository.findByTitle(title);
     }
 
-    public Song create(SongCreateDTO songDTO) {
+    public Song create(SongCreateDTO songDTO, UUID albumId) {
         String albumTitle = songDTO.getAlbum();
-        UUID albumId = UUID.fromString(restTemplate.getForObject(albumServiceUrl + "/id/" + albumTitle, String.class));
+        if(albumId == null) albumId = UUID.fromString(restTemplate.getForObject(albumServiceUrl + "/id/" + albumTitle, String.class));
 
         Song song = Song.builder()
                 .title(songDTO.getTitle())
@@ -69,9 +69,9 @@ public class SongService {
         return song;
     }
 
-    public void update(Song song, SongCreateDTO songDTO) {
+    public void update(Song song, SongCreateDTO songDTO, UUID albumId) {
         String albumTitle = songDTO.getAlbum();
-        UUID albumId = UUID.fromString(restTemplate.getForObject(albumServiceUrl + "/id/" + albumTitle, String.class));
+        if(albumId == null) albumId = UUID.fromString(restTemplate.getForObject(albumServiceUrl + "/id/" + albumTitle, String.class));
 
         song.setTitle(songDTO.getTitle());
         song.setAlbumId(albumId);
